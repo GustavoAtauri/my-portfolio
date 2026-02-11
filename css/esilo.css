@@ -301,10 +301,11 @@ ul {
 .titulo_pj {
     width: 100%;
     font-size: 2.0em;
-    color: #fff;
+    color: #f39c12;
     padding-bottom: 17px;
     text-align: center; /* Centralização horizontal */
     float: none; /* Remove qualquer float residual */
+
 }
 
 .box-projeto {
@@ -654,4 +655,34 @@ ul {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+/* --- ESTILO PARA VÍDEOS NOS PROJETOS --- */
+.video-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.video_projeto {
+    width: 90%;
+    max-width: 1000px; /* Limita o tamanho para não ficar gigante em monitores grandes */
+    height: auto;
+    border-radius: 12px; /* Mantém a estética de bordas suaves do seu site */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Adiciona profundidade */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Uma borda sutil para destacar do fundo */
+}
+
+/* Ajuste para garantir que o vídeo ocupe bem a tela no celular */
+@media (max-width: 768px) {
+    .video_projeto {
+        width: 95%;
+    }
+}
+
+/* --- DESTAQUE NO TÍTULO DE ABERTURA --- */
+.destaque-amarelo {
+    color: #f39c12; /* O tom de amarelo/laranja dos seus botões e menu */
+    font-weight: 900; /* Mantém o peso da fonte do título original */
 }
