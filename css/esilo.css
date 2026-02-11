@@ -1,0 +1,657 @@
+/* --- CONFIGURAÇÕES GERAIS E ROLAGEM --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Melhor prática para cálculos de largura */
+}
+
+html {
+    scroll-behavior: smooth; /* Efeito de rolagem suave */
+}
+
+/* Espaçamento para a rolagem não "atropelar" o conteúdo (Aumentado para compensar o menu fixo) */
+#projeto_topo, #resumo, #hardskills, #certificados, #contato {
+    scroll-margin-top: 120px; 
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background: #242323 url(../imagens/pretocinzafundo.jpg) no-repeat;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Mantém o fundo fixo ao rolar */
+}
+
+ul {
+    list-style: none;
+}
+
+#container {
+    min-width: 320px;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding-top: 6.1em; /* Adicionado para compensar o menu fixo e não esconder o topo do site */
+}
+
+/* --- TOPO E NAVEGAÇÃO FIXA (VERSÃO MODERNIZADA) --- */
+#container_topo {
+    width: 100%;
+    min-height: 4.5em; /* Reduzi um pouco para ficar mais elegante */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    
+    /* Efeito Glassmorphism */
+    background: rgba(36, 35, 35, 0.75); 
+    backdrop-filter: blur(12px); /* Embaça o que passa por trás */
+    -webkit-backdrop-filter: blur(12px);
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil inferior */
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+#topo {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#topo ul {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaçamento uniforme entre os itens */
+    width: 100%;
+}
+
+#topo ul li {
+    float: none; /* Remove o float antigo */
+}
+
+#topo ul a {
+    position: relative; /* Necessário para o efeito da linha embaixo */
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#topo ul a:hover {
+    color: #f39c12; /* Cor laranja que você já usa nos botões */
+}
+
+#topo ul a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px;
+    left: 50%;
+    background-color: #f39c12;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+#topo ul a:hover::after {
+    width: 70%; /* A linha cresce ao passar o mouse */
+}
+
+/* Efeito de clique (feedback visual) */
+#topo ul a:active {
+    transform: scale(0.95);
+}
+
+/* --- SEÇÃO DE ABERTURA --- */
+#box_abertura {
+    width: 600px;
+    margin: 165px 0 0 150px;
+    float: left;
+}
+
+#ola {
+    font-family: 'Inter', sans-serif;
+    color: white;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+#eusou {
+    font-family: 'Inter', sans-serif;
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.1;
+    font-size: 60px;
+}
+
+/* --- SEÇÃO HARD SKILLS RESPONSIVA --- */
+#hardskills {
+    display: flex;
+    flex-wrap: wrap;         /* Se a tela for MUITO pequena, eles pulam linha em vez de sumir */
+    justify-content: center; /* Mantém os cards centralizados lado a lado */
+    flex-direction: row;     /* Força o alinhamento horizontal */
+    margin-right: 100px;
+    margin-top: 220px;
+}
+
+#resumotres {
+    width: 100%;
+    text-align: center;
+}
+
+.titulo_hs {
+    color: #fff;
+    padding-bottom: 30px;
+    font-size: clamp(40px, 5vw, 80px); /* Fonte diminui com a tela */
+    margin-right: 0;         /* Removi a margem que jogava o título pro lado */
+}
+
+/* Criamos uma regra para garantir que os cards fiquem lado a lado */
+#hardskills .ux-card {
+    float: none;             /* Remove float antigo */
+    display: flex;           /* Para centralizar a imagem dentro do card */
+    align-items: center;
+    justify-content: center;
+    margin: 10px;            /* Espaçamento entre os cards */
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0;          /* Impede que o card amasse em telas pequenas */
+}
+
+
+/* Container para os cards */
+#container_cards {
+    display: flex;
+    flex-wrap: wrap; /* Faz os cards pularem de linha em telas pequenas */
+    justify-content: center;
+    gap: 20px; /* Espaço entre os cards sem precisar de margin fixa */
+    width: 100%;
+}
+
+.ux-card {
+    background-color: #36383D;
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: 1px solid #2d2f33;
+    
+    /* Largura proporcional */
+    width: 130px; 
+    aspect-ratio: 1 / 1;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: none; /* Remove o float */
+    margin: 0; /* Margem agora controlada pelo 'gap' do pai */
+}
+.ux-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+.ux-card {
+    /* ... suas configurações anteriores ... */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transição suave com "bounce" */
+    touch-action: manipulation; /* Otimiza o toque para dispositivos móveis */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Quando passa o mouse OU toca no celular */
+.ux-card:hover, 
+.ux-card:active {
+    transform: translateY(-10px) scale(1.1); /* Sobe e aumenta levemente */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* Sombra mais profunda */
+    border-color: #2d2f33; /* Muda a borda para branco */
+    filter: brightness(1.2); /* Dá um brilho no ícone */
+    z-index: 10;
+}
+
+/* Efeito de brilho reflexo ao tocar (opcional) */
+.ux-card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    transition: 0.5s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ux-card:active::after {
+    opacity: 1;
+    top: -20%;
+    left: -20%;
+}
+
+#caixas {
+    background: #36383D url(../imagens/html.png) no-repeat center;
+    background-size: 100px;
+}
+
+#caixascss {
+    background: #36383D url(../imagens/css.png) no-repeat center;
+    background-size: 70px;
+}
+
+#caixasux {
+    background: #36383D url(../imagens/ux.png) no-repeat center;
+    background-size: 140px;
+}
+
+#caixasfig {
+    background: #36383D url(../imagens/figma.png) no-repeat center;
+    background-size: 60px;
+}
+
+/* --- SEÇÃO RESUMO / SOBRE MIM --- */
+#resumo {
+    font-family: Helvetica;
+    color: #b8b1b1;
+    width: 400px;
+    line-height: 1.7em;
+    margin-left: 150px;
+    margin-top: 20px;
+    float: left;
+    font-size: 1.5em;
+}
+
+.titulo {
+    font-size: 2.0em;
+    color: #fff;
+    padding-bottom: 17px;
+}
+
+/* --- SEÇÃO PROJETOS --- */
+#projeto_topo {
+    clear: both;
+    margin-top: 100px; /* Reduzido de 1000px para ser mais flexível */
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+#projeto_topo h2 {
+    /* clamp(tamanho_min, tamanho_ideal, tamanho_max) */
+    font-size: clamp(40px, 8vw, 90px); 
+    color: white; 
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.titulo_pj {
+    width: 100%;
+    font-size: 2.0em;
+    color: #fff;
+    padding-bottom: 17px;
+    text-align: center; /* Centralização horizontal */
+    float: none; /* Remove qualquer float residual */
+}
+
+.box-projeto {
+    clear: both; /* Impede que elementos com float subam para as laterais */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza tudo que estiver dentro */
+    margin-bottom: 80px;
+}
+
+#resumo_projeto {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #b8b1b1;
+    
+    /* REMOVIDO width: 1600px fixo */
+    width: 90%; 
+    max-width: 1200px; /* Limite de largura para não ficar esticado demais em monitores UltraWide */
+    
+    line-height: 1.6em;
+    margin: 0 auto 100px auto; /* Centraliza horizontalmente */
+    float: none; /* Removido o float */
+    
+    font-size: clamp(1.1em, 2vw, 1.5em); /* Fonte diminui conforme a tela */
+    text-align: center;
+}
+
+#container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 8px; /* Opcional: deixa as bordas das fotos mais suaves */
+}
+
+
+/* Ajuste na imagem para garantir que ela não saia do centro */
+.center_tec {
+    display: block;
+    margin: 0 auto 30px auto;
+    max-width: 1000px; /* Limita o tamanho da imagem para não ficar gigante no PC */
+}
+
+
+/* Ajustes para telas menores (Mobile) */
+@media (max-width: 768px) {
+    #container {
+        padding-top: 8em; /* Aumenta o espaço pois o menu pode ocupar mais linhas */
+    }
+
+    #topo ul a {
+        margin: 5px; /* Reduz o espaçamento entre links no celular */
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    /* Ajuste das seções que usam largura fixa */
+    #box_abertura, #hardskills, #resumo, #resumo_projeto {
+        width: 90% !important; /* Força a ocupar quase toda a largura da tela */
+        margin: 20px auto !important; /* Centraliza e remove margens fixas */
+        float: none !important; /* Remove o float para não empilhar de lado */
+        text-align: center;
+    }
+
+    #eusou {
+        font-size: 35px; /* Diminui o título principal no celular */
+    }
+
+    .titulo_hs {
+        font-size: 40px;
+        margin-right: 0;
+    }
+
+    .ux-card {
+        float: none;
+        display: inline-flex; /* Alinha os cards lado a lado se couberem */
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ux-card {
+        width: 100px; /* Reduz um pouco o card em telas minúsculas */
+    }
+    
+    .titulo_hs {
+        font-size: 2.5rem;
+    }
+}
+
+@media (hover: none) {
+    .ux-card:active {
+        transform: scale(0.95); /* Dá um efeito de "clique" (diminui um pouco) */
+        background-color: #45484d;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Reduz a altura do topo para ganhar espaço vertical */
+    #container_topo {
+        height: auto;
+        min-height: 5em;
+    }
+
+    #topo {
+        padding: 0 5px; /* Reduz o respiro lateral do container */
+    }
+
+    #topo ul {
+        display: flex;
+        justify-content: center;
+        gap: 2px; /* Controla o espaço exato entre os itens */
+        padding-left: 0; /* Remove padding que possa estar empurrando o menu */
+    }
+
+    #topo ul a {
+        /* Reduz o tamanho da fonte e remove as margens gigantes */
+        font-size: 0.85em; 
+        margin: 15px 5px; /* Margem vertical de 15px e horizontal de apenas 5px */
+        padding: 5px; 
+        letter-spacing: -0.5px; /* Aproxima levemente as letras se necessário */
+    }
+}
+
+@media (max-width: 768px) {
+    #topo ul {
+        padding-left: 0 !important;
+        float: none !important;
+        text-align: center;
+    }
+}
+
+/* --- SEÇÃO CERTIFICADOS --- */
+#certificados {
+    clear: both;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.titulo_cert {
+    font-size: clamp(40px, 8vw, 70px);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+
+/* --- CONTAINER DOS CERTIFICADOS --- */
+.container_cert {
+    display: flex;         /* Ativa o modo flexbox */
+    flex-wrap: wrap;      /* Permite que os itens quebrem linha */
+    justify-content: center; /* Centraliza os itens na linha */
+    gap: 25px;            /* Cria um espaçamento uniforme entre os cards */
+    width: 100%;
+    max-width: 1200px;    /* Largura máxima do conteúdo */
+    margin: 0 auto;       /* Centraliza o container na página */
+    padding: 20px;
+}
+
+/* --- ESTILO DO CARD INDIVIDUAL --- */
+.box_cert {
+    flex: 0 1 350px;      /* Não cresce, pode encolher, base de 350px */
+    background: rgba(54, 56, 61, 0.5);
+    border: 1px solid #2d2f33;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Organiza imagem e texto em coluna dentro do card */
+    transition: transform 0.3s;
+}
+
+/* Garante que as imagens não fiquem gigantes ou tortas */
+.box_cert img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.box_cert:hover {
+    transform: translateY(-5px);
+    border-color: #fff;
+}
+
+.box_cert img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem deformar */
+}
+
+.info_cert {
+    padding: 20px;
+    text-align: left;
+}
+
+.info_cert h3 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.info_cert p {
+    color: #b8b1b1;
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.btn_pdf {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f39c12; /* Cor de destaque (laranja) */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: background 0.3s;
+}
+
+.btn_pdf:hover {
+    background-color: #e67e22;
+}
+
+/* Ajuste para Celulares */
+@media (max-width: 480px) {
+    .box_cert {
+        width: 100%; /* No celular, o certificado ocupa a largura total */
+    }
+}
+
+/* --- SEÇÃO CONTATO --- */
+#contato {
+    clear: both;
+    padding: 100px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02); /* Leve destaque de fundo */
+    margin-top: 50px;
+}
+
+.titulo_contato {
+    font-size: clamp(35px, 6vw, 60px);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.subtitulo_contato {
+    color: #b8b1b1;
+    margin-bottom: 50px;
+    font-size: 1.1em;
+}
+
+.container_icones_contato {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.card_contato {
+    text-decoration: none;
+    background: rgba(54, 56, 61, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 20px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.icone_social img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    filter: grayscale(100%); /* Ícones começam cinzas */
+    transition: 0.3s;
+}
+
+.card_contato span {
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+}
+
+/* --- EFEITOS HOVER --- */
+.card_contato:hover {
+    transform: translateY(-15px);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.card_contato:hover .icone_social img {
+    filter: grayscale(0%); /* Ganham cor ao passar o mouse/toque */
+    transform: scale(1.1);
+}
+
+/* Cores específicas de borda no hover para dar um charme */
+.linkedin:hover { border-color: #0077b5; }
+.github:hover { border-color: #6e5494; }
+.whatsapp:hover { border-color: #25d366; }
+.instagram:hover { border-color: #e1306c; }
+
+/* Ajuste Mobile */
+@media (max-width: 480px) {
+    .card_contato {
+        width: 140px;
+        padding: 20px;
+    }
+}
+
+/* --- ESTILO DO BOTÃO DE REPOSITÓRIO --- */
+.btn_repo {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: transparent;
+    color: #f39c12;
+    border: 2px solid #f39c12;
+    text-decoration: none;
+    border-radius: 30px; /* Estilo pílula, bem moderno */
+    font-weight: bold;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-bottom: 40px; /* Espaço para o próximo projeto */
+}
+
+.btn_repo:hover {
+    background-color: #f39c12;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+}
+
+/* Ajuste na box-projeto para garantir o alinhamento central */
+.box-projeto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
