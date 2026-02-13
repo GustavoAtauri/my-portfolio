@@ -253,13 +253,13 @@ ul {
 }
 
 #caixasux {
-    background: #36383D url(../imagens/ux.png) no-repeat center;
-    background-size: 140px;
+    background: #36383D url(../imagens/javascript.png) no-repeat center;
+    background-size: 100px;
 }
 
 #caixasfig {
-    background: #36383D url(../imagens/figma.png) no-repeat center;
-    background-size: 60px;
+    background: #36383D url(../imagens/ux.png) no-repeat center;
+    background-size: 140px;
 }
 
 /* --- SEÇÃO RESUMO / SOBRE MIM --- */
@@ -935,3 +935,4 @@ ul {
         justify-content: center;
     }
 }
+
